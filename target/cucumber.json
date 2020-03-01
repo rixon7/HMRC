@@ -1,0 +1,52 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 28,
+        "name": "Find the most expensive dress and add to cart",
+        "description": "",
+        "id": "newaccount;find-the-most-expensive-dress-and-add-to-cart",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 13346142300,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "User on landing page",
+            "match": {
+              "location": "StepDefinitions.user_on_landing_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2948468700,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "Find most expensive dress and add it to the cart",
+            "match": {
+              "location": "StepDefinitions.find_most_expensive_dress_and_add_it_to_the_cart()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 27,
+            "name": "@ExpensiveDressTest"
+          }
+        ]
+      }
+    ],
+    "name": "NewAccount",
+    "description": "",
+    "id": "newaccount",
+    "keyword": "Feature",
+    "uri": "NewAccount.feature"
+  }
+]

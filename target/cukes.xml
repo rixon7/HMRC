@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="16.294611">
+<testcase classname="NewAccount" name="Find the most expensive dress and add to cart" time="16.294611">
+<system-out><![CDATA[Given User on landing page..................................................passed
+Then Find most expensive dress and add it to the cart.......................passed
+]]></system-out>
+</testcase>
+</testsuite>

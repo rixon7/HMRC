@@ -8,17 +8,11 @@ import java.util.concurrent.TimeUnit;
 public class Hooks extends Base{
 
 		
-	@After("@AccountTest")
+	@After()
 	public void Aftervaldiation()
 	{
 		driver.close();
 	}
-	/*@After("@LoginTest,@ShoppingCartTest")
-	public void AfterSeleniumTest()
-	{
-		driver.close();
-	}
-		*/
 	
 }
 

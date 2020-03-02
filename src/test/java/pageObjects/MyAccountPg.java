@@ -13,12 +13,17 @@ public class MyAccountPg {
 	}
 
 	By myaccountSignout=By.xpath("//a[@class='logout']");
+	By myaccountWelcomeText=By.xpath("//p[@class='info-account']");
 	
 
 
 	public WebElement getMyaccountSignout()
 	{
 		return driver.findElement(myaccountSignout);
+	}
+	public WebElement getMyaccountWelcomeText()
+	{
+		return driver.findElement(myaccountWelcomeText);
 	}
 	
 		

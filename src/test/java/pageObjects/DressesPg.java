@@ -16,6 +16,7 @@ public class DressesPg {
 	By dressesPd2AddToCart=By.xpath("//li[@class='ajax_block_product last-item-of-tablet-line col-xs-12']//span[contains(text(),'Add to cart')]");
 	By dressesContinueShopping=By.xpath("//span[@class='continue btn btn-default button exclusive-medium']//span[1]");
 	By dressesViewShpCrt=By.xpath("//b[contains(text(),'Cart')]");
+	By dressesDropdownButton=By.xpath("//select[@id='selectProductSort']");
 	
 
 	public WebElement getDressesListViewButton()
@@ -33,6 +34,10 @@ public class DressesPg {
 	public WebElement getDressesViewShpCrt()
 	{
 		return driver.findElement(dressesViewShpCrt);
+	}
+	public WebElement getDressesDropdownButton()
+	{
+		return driver.findElement(dressesDropdownButton);
 	}
 	
 }

@@ -1,8 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="16.294611">
-<testcase classname="NewAccount" name="Find the most expensive dress and add to cart" time="16.294611">
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="4" time="79.245115">
+<testcase classname="NewAccount" name="Create new account" time="19.361276">
 <system-out><![CDATA[Given User on landing page..................................................passed
+When User click on sign in button...........................................passed
+Then user enters "mike@gmail.com"...........................................passed
+Then Click on Create an account button......................................passed
+Then Enter "Mike" "Wills" "abcd1234" "1 Broadway" "New York" "58962""07922228058455".passed
+Then Select State "New York"................................................passed
+Then Click on Register......................................................passed
+Then Verify user logged in and landed on my account page....................passed
+Then Click on Signout.......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="NewAccount" name="Existing customer login" time="14.451099">
+<system-out><![CDATA[Given User on landing page..................................................passed
+When User click on sign in button...........................................passed
+Then Enter existing customer email id "mike1@gmail.com" and password "abcd1234".passed
+Then Click on sign in button in already registered box......................passed
+Then Verify user logged in and landed on my account page....................passed
+Then Click on Signout.......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="NewAccount" name="Find the most expensive dress and add to cart" time="14.127827">
+<system-out><![CDATA[Given User on landing page..................................................passed
+When User click on sign in button...........................................passed
+Then user click on dresses menu.............................................passed
+Then user select listview...................................................passed
+Then user select Highest Price from the dropdown............................passed
 Then Find most expensive dress and add it to the cart.......................passed
 ]]></system-out>
+</testcase>
+<testcase classname="NewAccount" name="Logged in customer logout and login again to verify item in cart" time="31.304913">
+<failure message="org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[@class='heading-counter']&quot;}&#10;  (Session info: chrome=80.0.3987.122)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'RIXON7', ip: '192.168.0.77', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.122, chrome: {chromedriverVersion: 79.0.3945.36 (3582db32b3389..., userDataDir: C:\Users\rixon\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:62135}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}&#10;Session ID: a9282f174c291e81777d7f8f0ee6ab9d&#10;*** Element info: {Using=xpath, value=//span[@class='heading-counter']}&#13;&#10;&#9;at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;&#10;&#9;at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)&#13;&#10;&#9;at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)&#13;&#10;&#9;at java.lang.reflect.Constructor.newInstance(Constructor.java:423)&#13;&#10;&#9;at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)&#13;&#10;&#9;at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)&#13;&#10;&#9;at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)&#13;&#10;&#9;at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)&#13;&#10;&#9;at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)&#13;&#10;&#9;at org.openqa.selenium.By$ByXPath.findElement(By.java:353)&#13;&#10;&#9;at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)&#13;&#10;&#9;at pageObjects.CartSummaryPg.getCartSmryHdrTxt(CartSummaryPg.java:21)&#13;&#10;&#9;at stepDefinations.StepDefinitions.verify_the_item_is_still_in_the_cart(StepDefinitions.java:157)&#13;&#10;&#9;at ✽.Then Verify the item is still in the cart(NewAccount.feature:53)&#13;&#10;"><![CDATA[Given User on landing page..................................................passed
+When User click on sign in button...........................................passed
+Then Enter existing customer email id "mike1@gmail.com" and password "abcd1234".passed
+Then Click on sign in button in already registered box......................passed
+Then Verify user logged in and landed on my account page....................passed
+Then user click on dresses menu.............................................passed
+Then user select listview...................................................passed
+Then user select Highest Price from the dropdown............................passed
+Then Find most expensive dress and add it to the cart.......................passed
+Then Verify the item is still in the cart...................................passed
+Then Click on Signout.......................................................passed
+When User click on sign in button...........................................passed
+Then Enter existing customer email id "mike1@gmail.com" and password "abcd1234".passed
+Then Click on sign in button in already registered box......................passed
+Then Verify the item is still in the cart...................................failed
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[@class='heading-counter']"}
+  (Session info: chrome=80.0.3987.122)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'RIXON7', ip: '192.168.0.77', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.122, chrome: {chromedriverVersion: 79.0.3945.36 (3582db32b3389..., userDataDir: C:\Users\rixon\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:62135}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: a9282f174c291e81777d7f8f0ee6ab9d
+*** Element info: {Using=xpath, value=//span[@class='heading-counter']}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at pageObjects.CartSummaryPg.getCartSmryHdrTxt(CartSummaryPg.java:21)
+	at stepDefinations.StepDefinitions.verify_the_item_is_still_in_the_cart(StepDefinitions.java:157)
+	at ✽.Then Verify the item is still in the cart(NewAccount.feature:53)
+]]></failure>
 </testcase>
 </testsuite>

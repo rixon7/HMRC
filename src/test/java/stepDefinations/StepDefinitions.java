@@ -6,6 +6,7 @@ import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import cucumber.api.junit.Cucumber;
 import junit.framework.Assert;
+import pageObjects.CartSummaryPg;
 import pageObjects.CreateAccountPg;
 import pageObjects.DressesPg;
 import pageObjects.HomePg;
@@ -14,6 +15,7 @@ import pageObjects.SigninPg;
 
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,26 +34,26 @@ public class StepDefinitions {
 	CreateAccountPg ca;
 	MyAccountPg ma;
 	DressesPg d;
+	CartSummaryPg cs;
 
     @Given("^User on landing page$")
     public void user_on_landing_page() throws Throwable {
     	driver = Base.getDriver();
     }
+    
     @When("^User click on sign in button$")
     public void user_click_on_sign_in_button() throws Throwable {
        	h = new HomePg (driver);
     	h.getHomeSigninButton().click();
-    	
-    	Thread.sleep(3000);
-
     }
 
-    @Then("^Enter email address \"([^\"]*)\"$")
-    public void enter_email_address_something(String strArg1) throws Throwable {
-    	sp = new SigninPg(driver);
-    	sp.getSigninCreateAccountEmail().sendKeys(strArg1);
-    
-    }
+  @Then("^user enters \"([^\"]*)\"$")
+public void user_enters(String emailId) throws Throwable {
+	String d =RandomStringUtils.randomNumeric(2);
+	sp = new SigninPg(driver);
+	sp.getSigninCreateAccountEmail().sendKeys(d +emailId);
+
+}
     
     @Then("^Click on Create an account button$")
     public void click_on_create_an_account_button() throws Throwable {
@@ -60,25 +62,7 @@ public class StepDefinitions {
     	sp.getSigninCreateAccountButton().click();
     	
     }
-
-    @Then("^Enter First name \"([^\"]*)\" and Last name \"([^\"]*)\" and Password \"([^\"]*)\"$")
-    public void enter_first_name_something_and_last_name_something_and_password_something(String strArg1, String strArg2, String strArg3) throws Throwable {
-
-    	ca = new CreateAccountPg (driver);
-    	ca.getCreateAccountFirstName().sendKeys(strArg1);
-    	ca.getCreateAccountLastName().sendKeys(strArg2);
-    	ca.getCreateAccountPassword().sendKeys(strArg3);
-
-    }
-
-    @Then("^Enter Address \"([^\"]*)\" and City \"([^\"]*)\"$")
-    public void enter_address_something_and_city_something(String strArg1, String strArg2) throws Throwable {
-
-    	ca.getCreateAccountAddress().sendKeys(strArg1);
-    	ca.getCreateAccountCity().sendKeys(strArg2);
-
-    }
-
+  
     @Then("^Select State \"([^\"]*)\"$")
     public void select_state_something(String strArg1) throws Throwable {
 
@@ -86,14 +70,7 @@ public class StepDefinitions {
     	dropdown.selectByVisibleText(strArg1);
 
     }
-
-    @Then("^Enter Postal code \"([^\"]*)\" and Mobile phone \"([^\"]*)\"$")
-    public void enter_postal_code_something_and_mobile_phone_something(String strArg1, String strArg2) throws Throwable {
-
-    	ca.getCreateAccountPostcode().sendKeys(strArg1);
-    	ca.getCreateAccountMobile().sendKeys(strArg2);
-
-    }
+    
     @Then("^Click on Register$")
     public void click_on_register() throws Throwable {
 
@@ -102,8 +79,9 @@ public class StepDefinitions {
     
     @Then("^Verify user logged in and landed on my account page$")
     public void verify_user_logged_in_and_landed_on_my_account_page() throws Throwable {
-
-    	Assert.assertEquals(driver.findElement(By.xpath("//p[@class='info-account']")).getText(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+    	ma = new MyAccountPg (driver);
+    	
+    	Assert.assertEquals(ma.getMyaccountWelcomeText().getText(), "Welcome to your account. Here you can manage all of your personal information and orders.");
     	
     }
     @Then("^Click on Signout$")
@@ -128,8 +106,8 @@ public class StepDefinitions {
     	sp.getSigninExistingCustomerSigninButton().click();
     }
 
-    @Then("^Find most expensive dress and add it to the cart$")
-    public void find_most_expensive_dress_and_add_it_to_the_cart() throws Throwable {
+    @Then("^user click on dresses menu$")
+    public void user_click_on_dresses_menu() throws Throwable {
 
     	d = new DressesPg(driver);
     	
@@ -138,42 +116,60 @@ public class StepDefinitions {
     	h.getHomeLogoButton().click();
     	h.getHomeDressesButton().click();
     	
-    	List<WebElement> productPrice = driver.findElements(By.xpath("//*[@itemprop='price']"));
+    }
+
+    @Then("^user select listview$")
+    public void user_select_listview() throws Throwable {
+
+    	d = new DressesPg(driver);
     	
+    	d.getDressesListViewButton().click();
     	
-    	for (int i=0;i<productPrice.size();i++)
-    		
-    	{
-    		String price=productPrice.get(i).getText();
-    		
-    		System.out.println(price);
-    		
-    	}
-    		
-    	/*{
-    		double price=Double.parseDouble(productPrice.get(i).getText().substring(1));
-    		
-    		System.out.println(price);
-    		
-    	}*/
+    }
+
+    @Then("^user select Highest Price from the dropdown$")
+    public void user_select_highest_price_from_the_dropdown() throws Throwable {
+
+    	d = new DressesPg(driver);
+
+    	Select dropdown = new Select(d.getDressesDropdownButton());
+    	dropdown.selectByVisibleText("Price: Highest first");
     	
-    	/*d.getDressesListViewButton().click();
+
+    }
+    @Then("^Find most expensive dress and add it to the cart$")
+    public void find_most_expensive_dress_and_add_it_to_the_cart() throws Throwable {
+
+    	d = new DressesPg(driver);
+    	
     	d.getDressesPd2AddToCart().click();
     	d.getDressesContinueShopping().click();
     	
-    	
-    	/*Select dropdown = new Select(ca.getCreateAccountStateDropdown());
-    	dropdown.selectByVisibleText(strArg1);*/
-    	
-    	    	
 
     }
     
     @Then("^Verify the item is still in the cart$")
     public void verify_the_item_is_still_in_the_cart() throws Throwable {
+    	
+    	cs = new CartSummaryPg(driver);
     	d.getDressesViewShpCrt().click();
     	
-    	Assert.assertEquals(driver.findElement(By.xpath("//span[@class='heading-counter']")).getText(), "Your shopping cart contains: 1 Product");
-    	//System.out.println(driver.findElement(By.xpath("//h1[@id='cart_title']")).getText());
+    	Assert.assertEquals(cs.getCartSmryHdrTxt().getText(), "Your shopping cart contains: 1 Product");
+    	
     }
+    
+ 
+@Then("^Enter \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"\"([^\"]*)\"$")
+public void enter(String firstname, String lastname, String password, String address, String cityName, String postCode, String Mobile) throws Throwable {
+	ca = new CreateAccountPg (driver);
+	ca.getCreateAccountFirstName().sendKeys(firstname);
+	ca.getCreateAccountLastName().sendKeys(lastname);
+	ca.getCreateAccountPassword().sendKeys(password);
+	ca.getCreateAccountAddress().sendKeys(address);
+	ca.getCreateAccountCity().sendKeys(cityName);
+	ca.getCreateAccountPostcode().sendKeys(postCode);
+	ca.getCreateAccountMobile().sendKeys(Mobile);
+	
+}
+
 }
